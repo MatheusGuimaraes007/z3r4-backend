@@ -3,7 +3,9 @@ import app from './app.js';
 import dotenv from 'dotenv';
 dotenv.config();
 
+const PORT = process.env.PORT || 3308;
 const server = http.createServer(app);
-server.listen(process.env.API_PORT || 3308, () => {
-  console.log('Servidor Iniciado');
+
+server.listen(PORT, () => {
+  console.log(`Servidor iniciado na porta ${PORT}`);
 });
