@@ -4,6 +4,6 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const server = http.createServer(app);
-server.listen(process.env.API_PORT, () => {
+server.listen(process.env.API_PORT || 3308, () => {
   console.log('Servidor Iniciado');
 });
