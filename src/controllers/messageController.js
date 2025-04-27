@@ -102,17 +102,24 @@ Responda com precisão, sem inventar dados, e cite nomes dos jogadores e torneio
   }
 }
 
-// async function aksIa(req, res, next) {
-//   const { user_id, content } = req.body;
-//   if (!user_id || !content) {
-//     return res.status(400).json({ error: 'Missing user_id or content' });
-//   }
-//   try {
-//   } catch (err) {
-//     return res.status(500).json({ error: 'Internal Server Error' });
-//   }
-// }
+async function getMessage(req, res, next) {
+  const user_id = req.params.id;
+  if (!user_id) {
+    return res.status(400).json({ error: 'Missing user_id or content' });
+  }
+  try {
+    const { data: dataHistory, error: errorHistory } = await supabase
+      .from('messages')
+      .select('role, content')
+      .eq('user_id', user_id)
+      .order('created_at', { ascending: true });
+    return res.status(200).json({ dataHistory });
+  } catch (err) {
+    return res.status(500).json({ error: 'Internal Server Error' });
+  }
+}
 
 export default {
   ask,
+  getMessage,
 };
