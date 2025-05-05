@@ -101,8 +101,3 @@ Desenvolvido por **Matheus Guimarães**
 
 ---
 
-## 📄 Licença
-
-Este projeto está licenciado sob a **ISC License** — uso livre para fins acadêmicos e experimentais.
-
----
